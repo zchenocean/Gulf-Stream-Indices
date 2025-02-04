@@ -3,14 +3,14 @@ clc
 close all
 %% read data ====================================================
 % load data .mat : taux, lon, lat, time
-file1 = './NCfile/EN4_20points_T200_time_series_1954.01-2024.09.nc';
+file1 = './NCfile/EN4_20points_T200_time_series_195401-202411.nc';
 var = 'T_po';
 T9 = nc_varget(file1,var);
 po_lon = nc_varget(file1,'po_lon');
 po_lat = nc_varget(file1,'po_lat');
 %
-T9 = T9(:,1:(2024-1954)*12+9);
-time = 1:1:(2024-1954)*12+9;
+T9 = T9(:,1:(2024-1954)*12+11);
+time = 1:1:(2024-1954)*12+11;
 % get rid of nan points
 % there are some times for which ALL data are NaN
 nans = find(all(isnan(T9),1)==1);
@@ -152,7 +152,7 @@ gswi_detrend=gsw_detrend/std(gsw_detrend);
 gsi=gs/std(gs);
 gs_detrend=detrend(gs);
 gsi_detrend=gs_detrend/std(gs_detrend);
-save T200_GSI_EN4_1954.01-2024.09_monthly.mat Tall Tall_detrend gsi gsi_detrend gswi gswi_detrend gst x y 
+save T200_GSI_EN4_195401-202411_monthly.mat Tall Tall_detrend gsi gsi_detrend gswi gswi_detrend gst x y 
 % % remove the seasonal cycle
 % Da = zeros(size(Data));
 % w = 2*pi/365.25;
